@@ -126,3 +126,44 @@ src/
 ├── tsconfig.json
 └── tslint.json
 ```
+
+## Setup Styling with bootstrap
+
+Untuk menambahkan library bootstrap di project angular4 dengan template project via `@angular/cli`, saya mau tambahkan melalui `npm` yaitu seperti berikut
+
+```sh 
+npm install jquery bootstrap --save
+```
+
+Maka outpunya seperti berikut:
+
+```sh 
+dimmaryanto93@Aspire-E5-473G:~/Documents/angular4$ npm install jquery bootstrap --save
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.2 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
++ bootstrap@3.3.7
++ jquery@3.2.1
+added 116 packages in 26.785s
+```
+
+And then saya mau include `bootstrap` dan `jquery` ke project saya, dengan cara tambahkan di properti `styles` untuk stylesheet atau css dan `scripts` untuk javascript file di dalam file `.angular-cli.json` seperti berikut:
+
+```js 
+"apps": [
+    {
+      // add here *.css with relative path
+      "styles": [
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+      ],
+      // add here *.js with relative path
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+      ],
+      
+    }
+  ]
+```
