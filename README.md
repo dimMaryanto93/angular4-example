@@ -192,3 +192,91 @@ webpack: Compiled successfully.
 Nah dengan begitu saja kita bisa buka di browser masukan url [http://localhost:4200](http://localhost:4200/) hasilnya seperti berikut jika dibuka di browser 
 
 ![Ng server first time](docs/imgs/ng-serve-firsttime.png)
+
+## How angular run project works
+
+When you run the project via angular-cli, and then show the source page via browser you will see the `index.html` content. itu akan sama dengan apa yang ada di file `src/index.html` like this:
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular4</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root> <!-- # this tags is not available in sintax html because it custome tag provided by angular -->
+  <!--inject dependency by angular-cli default will be appear here!-->
+</body>
+</html>
+```
+
+Tapi bukan disitu ya initnya, jadi klo setiap program pasti ada main methodnya. Nah di angular juga punya main methodnya yaitu `src/main.ts` looks like this:
+
+```ts 
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) { // checking profile is production?
+  enableProdMode();
+}
+
+// ini adalah main methodnya, klo diliat bootstraping ini mirip seperti project springboot.
+platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.log(err));
+```
+
+Method `// ...bootstrapModule(AppModule)` sama seperti method `main()` di java. yang memanggil class `AppModule` dalam package `app` dengan nama file `app.module.ts` nah sekarang liat di file tersebut seperti ini:
+
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent // mendeklarasikan komponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent] // memangil class AppComponent
+})
+export class AppModule { }
+```
+
+Dalam annotation atau dekorator `@NgModule` ada property `declarations` dan `bootstrap`
+
+- `declarations` digunakan untuk medefinisikan `component`, `pipe`, dan lain.
+- `bootstrap` digunakan untuk menentukan `component` utama yang diload terlebih dahulu
+
+Nah sekarang kita buka file `src/app/app.component.ts` seperti berikut:
+
+```ts 
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+}
+```
+
+Didalam `app.component.ts` ada annotation atau dekorator `@Component` dengan properti sebagai berikut:
+
+- `selector` biasanya digunakan untuk membuat custom tag di html contohnya `<app-root></app-root>`
+- `templateUrl` untuk menentukan lokasi template atau viewnya
+- `styleUrls` untuk memasang stylesheet atau css untuk komponent `app.component.html` dan turunannya
+
+Jadi klo saya gambarkan flownya seperti berikut:
+
