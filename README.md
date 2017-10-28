@@ -169,3 +169,26 @@ And then saya mau include `bootstrap` dan `jquery` ke project saya, dengan cara 
     }
   ]
 ```
+
+## Run the project
+
+Untuk menjalankan aplikasi angular dengan template project via `@angular/cli` itu sangat mudah cukup dengan perintah `ng serve --open` maka outputnya seperti berikut:
+
+```sh 
+dimmaryanto93@Aspire-E5-473G:~/Documents/angular4$ ng serve
+** NG Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+Date: 2017-10-28T13:14:33.490Z                                                          
+Hash: f17012aebd21bff7f981
+Time: 16044ms
+chunk {inline} inline.bundle.js, inline.bundle.js.map (inline) 5.83 kB [entry] [rendered]
+chunk {main} main.bundle.js, main.bundle.js.map (main) 7.44 kB {vendor} [initial] [rendered]
+chunk {polyfills} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 217 kB {inline} [initial] [rendered]
+chunk {styles} styles.bundle.js, styles.bundle.js.map (styles) 149 kB {inline} [initial] [rendered]
+chunk {vendor} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.3 MB [initial] [rendered]
+
+webpack: Compiled successfully.
+```
+
+Nah dengan begitu saja kita bisa buka di browser masukan url [http://localhost:4200](http://localhost:4200/) hasilnya seperti berikut jika dibuka di browser 
+
+![Ng server first time](docs/imgs/ng-serve-firsttime.png)
