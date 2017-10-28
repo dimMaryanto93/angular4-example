@@ -53,3 +53,76 @@ Untuk membuat project dengan angularCLI bisa dengan menggunakan perintah:
 ng new angular4 #example used >> ng new [project-name]
 ```
 
+## Structure directory of Angular4
+
+### e2e folder
+
+folder ini biasanya digunakan sebagai unit testing di angular 
+
+```sh 
+e2e/
+├── app.e2e-spec.ts
+├── app.po.ts
+└── tsconfig.e2e.json
+
+0 directories, 3 files
+```
+
+### node_modules folder
+
+folder ini isinya adalah lib javascript yang dibuntuhkan oleh angular
+
+```sh 
+├── @angular
+├── @types
+├── @webpack
+└── typescript
+.
+.
+.
+.
+3190 directories, 22978 files
+```
+
+### src 
+
+Di folder ini kita akan menulis halaman, service, component, pipe, dan lain-lain untuk membuat aplikasi angular
+
+```sh 
+src/
+├── app
+│   ├── app.component.css
+│   ├── app.component.html
+│   ├── app.component.spec.ts
+│   ├── app.component.ts
+│   └── app.module.ts
+├── assets
+├── environments
+│   ├── environment.prod.ts
+│   └── environment.ts
+├── favicon.ico
+├── index.html
+├── main.ts
+├── polyfills.ts
+├── styles.css
+├── test.ts
+├── tsconfig.app.json
+├── tsconfig.spec.json
+└── typings.d.ts
+
+3 directories, 16 files
+```
+
+### Other files 
+
+```sh 
+├── angular-cli.json
+├── .editorconfig
+├── karma.conf.js
+├── package.json
+├── package-lock.json
+├── protractor.conf.js
+├── README.md
+├── tsconfig.json
+└── tslint.json
+```
