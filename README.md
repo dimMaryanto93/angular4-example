@@ -280,3 +280,4 @@ Didalam `app.component.ts` ada annotation atau dekorator `@Component` dengan pro
 
 Jadi klo saya gambarkan flownya seperti berikut:
 
+![Wow angular project works](docs/imgs/how-angular-works.jpg)
