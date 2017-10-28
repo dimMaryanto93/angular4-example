@@ -45,4 +45,11 @@ Untuk install angularCLI di linux membutuhkan superuser untuk installnya seperti
 npm install -g typescript lite-server @angular/cli
 ```
 
+## Membuat project dengan `@angular/cli`
+
+Untuk membuat project dengan angularCLI bisa dengan menggunakan perintah:
+
+```sh 
+ng new angular4 #example used >> ng new [project-name]
+```
 
