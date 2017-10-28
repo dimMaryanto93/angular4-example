@@ -12,7 +12,7 @@ Angular adalah JavaScript framework untuk membuat aplikasi berbasis *Single Page
 
 Angular-CLI adalah tools untuk membuat project, generate component, generate page, generate pipe dan masih banyak lagi ya, jadi AngularCLI ini adalah tools berbasis commandline untuk memudahkan kita (developer) membuat web berbasis angular.
 
-### Intallation AngularCLI
+### Intallation NodeJS
 
 Untuk menginstall AngularCLI kita butuh package managernya Javascript yaitu `NPM v.4.x or letter` dan `Node v.6.x or letter` di Ubuntu menggunakan perintah berikut:
 
@@ -35,6 +35,8 @@ dimmaryanto93@Aspire-E5-473G:~$ npm -v
 5.5.1 # << the npm version is 5.5.1
 ```
 
+### Installing `@angular/cli`
+
 Untuk menginstall package `@angular/cli` direkomentasikan menggunakan package `node` dan `npm` terbaru karena saya disini saat ini (Oktober 2017) masih menggunakan Angular4 masih works fine....
 
 Untuk install angularCLI di linux membutuhkan superuser untuk installnya seperti berikut:
@@ -42,3 +44,5 @@ Untuk install angularCLI di linux membutuhkan superuser untuk installnya seperti
 ```sh 
 npm install -g typescript lite-server @angular/cli
 ```
+
+
