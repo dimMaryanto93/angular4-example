@@ -4,6 +4,7 @@ Ada beberapa di bab ini saya akan bahas tentang:
 
 - Component
 - Databinding
+- Directive
 
 ## Component
 
@@ -68,3 +69,12 @@ export class AppComponent{
 ```
 
 Maka ketika awal di buka akan menampilkan `Halo Spring Interpolation` ketika text field ubah dan apa yang terjadi walll text pun ikut berubah karena fitur Two way Banding.
+
+## Directive
+
+Directive adalah ...
+
+### Directive Build-in function
+
+- `*ngFor`
+- `*ngIf`
