@@ -129,6 +129,172 @@ src/
 └── tslint.json
 ```
 
+## Undestanding the setup of AngularJs Project
+
+Untuk setup project angular, kita buat yang paling sering digunakankan ja ya supaya tidak terlalu banyak diantaranya seperti berikut:
+
+* `tsconfig.json`
+* `package.json`
+* `angular-cli.json` 
+
+### `tsconfig.json`
+
+```json
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}
+```
+
+Banyak property nah jadi kita jelaknan satu-persatu ya
+
+  * `compileOnSave` tujuannya ketika file di save nanti npm akan compile otomatis
+  * `compilerOptions` adalah opsi compiler bagi `tsc`
+    * `outDir` adalah nantnya khan typescript akan menghasilkan file dengan format javascript nah hasilcompilenya itu akan di simpan di folder `dist/out-tsc`
+    * `sourceMap` ini tujuannya jika bernilai `true` ini akan mempermudah ketika development karena error messagenya akan di tujukan langsung di typescriptnya tpi klo nilainya `false` biasanya error lognya di arahin ke javascript.
+    * `moduleResoulution` ini digunakan untuk system modulenya menggunakan `node` artinya nodeJs
+    * `emitDecoratorMetadata` dan `experimentalDecorators` digunakan untuk mengaktifkan decorator klo di java decorator itu seperti annotation `@Component`
+    * `target` ini adalah setelah di compile di ubah ke versi javascript seperti contohnya `es5` ini berpengaruh di browsernya apakah udah support.
+    
+    
+### `package.json`
+
+```json
+{
+  "name": "first-ng-app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^4.2.4",
+    "@angular/common": "^4.2.4",
+    "@angular/compiler": "^4.2.4",
+    "@angular/core": "^4.2.4",
+    "@angular/forms": "^4.2.4",
+    "@angular/http": "^4.2.4",
+    "@angular/platform-browser": "^4.2.4",
+    "@angular/platform-browser-dynamic": "^4.2.4",
+    "@angular/router": "^4.2.4",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.4.2",
+    "@angular/compiler-cli": "^4.2.4",
+    "@angular/language-service": "^4.2.4",
+    "@types/jasmine": "~2.5.53",
+    "@types/jasminewd2": "~2.0.2",
+    "@types/node": "~6.0.60",
+    "codelyzer": "~3.1.1",
+    "jasmine-core": "~2.6.2",
+    "jasmine-spec-reporter": "~4.1.0",
+    "karma": "~1.7.0",
+    "karma-chrome-launcher": "~2.1.1",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.1.2",
+    "ts-node": "~3.2.0",
+    "tslint": "~5.3.2",
+    "typescript": "~2.3.3"
+  }
+}
+```
+
+Nah `package.json` ini pada dasarnya sama seperti `pom.xml` jadi isinya berupa nama aplikasi, versi aplikasi dan dependency yang kita gunakan. Ok nah kita jelaskan aja ya
+
+* `name` ini adalah nama aplikasi kita
+* `version` ini adalah versi untuk aplikasi kita
+* `lisence` ini adalah lisence yang digunakan contohnya seperti `MIT`, `GNU`, dll.
+* `script` ini adalah script untuk menjalakan perntah contohnya `ng start`
+* `dependencies` dan `devDependencies` adalah library yang kita gunakan bedanya adalah klo `dependencies` itu lib yang bener2 dipake di production nah sedangkan `devDependencies` itu biasanya digunakan untuk development contohnya `lite-server` nah karena kita butuh server yang embedded ketika development jadi kita butuh itu tpi klo udah production khan udah ada web server yang di install tersediri di sistem jadi ya gak perlu lagi pake `lite-server`.
+
+
+### `angular-cli.json`
+
+```json
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": { "name": "first-ng-app" },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [ "styles.css" ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": { "config": "./protractor.conf.js" }
+  },
+  "lint": [
+    { "project": "src/tsconfig.app.json" },
+    { "project": "src/tsconfig.spec.json" },
+    { "project": "e2e/tsconfig.e2e.json" }
+  ],
+  "test": {
+    "karma": { "config": "./karma.conf.js" }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}
+```
+
+Setup file `angular-cli.json` ini hanya berlalu jika menggunakan `@angular/cli` sebagai temlate projectnya jadi di atas terdiri dari beberapa property yaitu seperti berikut:
+
+* `$schema` ini adalah schema yang digunakan untuk angularjs mapping system projectnya
+* `name` ini adalah nama aplikasi kita
+* `apps`
+  * `root` adalah source code kita untuk aplikasi angular js
+  * `outDir` adalah output yaitu hasil compile ke javascript
+  * `index` adalah halaman utama yang akan diload
+  * `styles` adalah file-file css yang akan diload dan nantnya di webpack atau di bundle sebagai include file css contohnya include file `bootstrap` dengan manambahkan dari node_modules seperti berikut `../node_modules/bootstrap/css/bootstrap.min.css`
+  * `scripts` adalah file-file js yang akan diload dan nantinya akan di webpack atau di bundle sebagai include file js contohnya include file `jquery`
+  
+
 ## Setup Styling with bootstrap
 
 Untuk menambahkan library bootstrap di project angular4 dengan template project via `@angular/cli`, saya mau tambahkan melalui `npm` yaitu seperti berikut
